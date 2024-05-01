@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Job Listing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* CSS for navigation bar */
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* CSS for marquee */
+        .marquee {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .marquee p {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 15s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Additional CSS for container */
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Add semi-transparent background to container */
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body style="background-image: url('aaa.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <a href="ho.html">Home</a>
+        <a href="login.html">login</a>
+        <a href="form.html">About</a>
+        <a href="signup.html">Contact</a>
+    </div>
+
+    <!-- Marquee for scrolling text -->
+    <div class="marquee">
+        <p>Welcome to our job portal! Find your dream job here.</p>
+    </div>
+
+    <!-- Job listing with filtering -->
+    <div class="container">
+        <h2>Job Listing</h2>
+        <label for="location">Filter by Location:</label>
+        <input type="text" id="location">
+        <label for="category">Filter by Category:</label>
+        <select id="category">
+            <option value="">All</option>
+            <option value="IT">IT</option>
+            <option value="Finance">Finance</option>
+            <option value="Marketing">Marketing</option>
+        </select>
+        <ul id="jobList">
+            <!-- Job listings will be populated dynamically using jQuery -->
+        </ul>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Sample job data
+            var jobs = [
+                { title: 'Software Engineer', location: 'New York', category: 'IT' },
+                { title: 'Financial Analyst', location: 'Chicago', category: 'Finance' },
+                { title: 'Marketing Manager', location: 'Los Angeles', category: 'Marketing' },
+                { title: 'Web Developer', location: 'Mumbai', category: 'IT' },
+                { title: 'Accountant', location: 'Delhi', category: 'Finance' },
+                { title: 'Digital Marketer', location: 'Bangalore', category: 'Marketing' },
+                { title: 'Software Developer', location: 'Hyderabad', category: 'IT' }
+                // Add more job data as needed
+            ];
+
+            // Populate job listings
+            function populateJobList() {
+                $('#jobList').empty(); // Clear previous listings
+
+                var location = $('#location').val().toLowerCase();
+                var category = $('#category').val();
+
+                jobs.forEach(function (job) {
+                    if ((location === '' || job.location.toLowerCase().includes(location)) &&
+                        (category === '' || job.category === category)) {
+                        $('#jobList').append('<li>' + job.title + ' - ' + job.location + ' - ' + job.category + '</li>');
+                    }
+                });
+            }
+
+            // Populate job listings on page load
+            populateJobList();
+
+            // Filter job listings on input change
+            $('#location, #category').on('input change', function () {
+                populateJobList();
+            });
+        });
+    </script>
+</body>
+
+</html>

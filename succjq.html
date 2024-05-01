@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Listing Registration</title>
+<style>
+    /* Add your CSS styles here */
+</style>
+</head>
+<body>
+
+<h1>Job Listings</h1>
+
+<div id="filters">
+    <label for="filterCategory">Filter by Category:</label>
+    <select id="filterCategory">
+        <option value="all">All</option>
+        <option value="design">Design</option>
+        <option value="development">Development</option>
+        <option value="marketing">Marketing</option>
+        <!-- Add more options as needed -->
+    </select>
+</div>
+
+<div id="jobListings">
+    <!-- Job listings will be dynamically added here -->
+</div>
+
+<button id="registerButton">Register</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Sample job data (replace with your own)
+        var jobData = [
+            { title: "Web Designer", category: "design" },
+            { title: "Frontend Developer", category: "development" },
+            { title: "Digital Marketer", category: "marketing" }
+            // Add more job listings as needed
+        ];
+
+        // Function to display job listings
+        function displayJobListings(jobs) {
+            $('#jobListings').empty(); // Clear previous listings
+            $.each(jobs, function(index, job) {
+                $('#jobListings').append('<div class="job">' + job.title + '</div>');
+            });
+        }
+
+        // Initial display of all job listings
+        displayJobListings(jobData);
+
+        // Filter job listings when category is changed
+        $('#filterCategory').change(function() {
+            var category = $(this).val();
+            if (category === 'all') {
+                displayJobListings(jobData); // Display all jobs
+            } else {
+                var filteredJobs = jobData.filter(function(job) {
+                    return job.category === category;
+                });
+                displayJobListings(filteredJobs); // Display filtered jobs
+            }
+        });
+
+        // Redirect to success page when register button is clicked
+        $('#registerButton').click(function() {
+            // Replace 'success.html' with the path to your success page
+            window.location.href = 'success.html';
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign Up</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e1afd8;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #ba8ebb;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #form {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .input-control {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #6ca1d9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="form">
+            <h1>Sign Up</h1>
+            <div class="input-control">
+                <label for="name1">Your Name: </label>
+                <input type="text" name="name1" id="name1">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="email">Email ID: </label>
+                <input type="text" id="email" name="email">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="pass">Password: </label>
+                <input type="text" id="pass" name="pass">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="age">Age: </label>
+                <input type="text" id="age" name="age">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="no">Phone no: </label>
+                <input type="text" id="no" name="no">
+                <div class="error"></div>
+            </div>
+
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+            var name = document.getElementById('name1').value;
+            var email = document.getElementById('email').value;
+            var pass = document.getElementById('pass').value;
+            var age = document.getElementById('age').value;
+            var no = document.getElementById('no').value;
+
+            // Check if all fields are filled
+            if (name && email && pass && age && no) {
+                // Display the entered values
+                alert('Name: ' + name + '\nEmail: ' + email + '\nPassword: ' + pass + '\nAge: ' + age + '\nPhone no: ' + no);
+
+                // Redirect to contact.html
+                window.location.href = "contact.html";
+            } else {
+                alert("Please fill in all fields before submitting.");
+            }
+        }
+    </script>
+</body>
+
+</html>

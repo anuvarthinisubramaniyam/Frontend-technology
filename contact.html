@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List and Filtering</title>
+    <style>
+        body
+        {
+            background-color: beige;
+        }
+        /* Style for contact list */
+        #contactList {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        /* Style for individual contact items */
+        .contact-item {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        /* Style for filter input */
+        #filterInput {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Contact List</h2>
+    
+    <!-- Filter input -->
+    <input type="text" id="filterInput" oninput="filterContacts()" placeholder="Filter by name...">
+    
+    <!-- Contact list -->
+    <ul id="contactList">
+        <li class="contact-item">John Doe</li>
+        <li class="contact-item">Jane Smith</li>
+        <li class="contact-item">David Brown</li>
+        <li class="contact-item">Emily Johnson</li>
+        <li class="contact-item">Michael Williams</li>
+    </ul>
+    
+    <script>
+        function filterContacts() {
+            // Get input value and convert to lowercase
+            var filterValue = document.getElementById("filterInput").value.toLowerCase();
+            
+            // Get all contact items
+            var contactItems = document.getElementsByClassName("contact-item");
+            
+            // Loop through contact items
+            for (var i = 0; i < contactItems.length; i++) {
+                var name = contactItems[i].innerText.toLowerCase();
+                
+                // If name contains filter value, display the contact item, otherwise hide it
+                if (name.includes(filterValue)) {
+                    contactItems[i].style.display = "";
+                } else {
+                    contactItems[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

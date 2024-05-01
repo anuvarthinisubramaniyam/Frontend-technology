@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html ng-app="jobListingApp">
+
+<head>
+    <title>Job Posting Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+            body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    .submitted-details {
+      margin-top: 20px;
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+    }
+    .submitted-details h2 {
+      margin-top: 0;
+    }
+    .submitted-details p {
+      margin: 5px 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div ng-controller="JobController as jobCtrl" class="container">
+        <h1>Job Posting Form</h1>
+        <form ng-submit="jobCtrl.addJob()">
+            <label>Job Title:</label>
+            <input type="text" ng-model="jobCtrl.newJob.title" required><br>
+            <label>Company:</label>
+            <input type="text" ng-model="jobCtrl.newJob.company" required><br>
+            <label>Location:</label>
+            <input type="text" ng-model="jobCtrl.newJob.location"><br>
+            <label>Salary:</label>
+            <input type="number" ng-model="jobCtrl.newJob.salary"><br>
+             
+            <label>Contact Email:</label>
+            <input type="email" ng-model="jobCtrl.newJob.contactEmail" required><br>
+            <button type="submit">Post Job</button>
+        </form>
+
+        <!-- Display job listings -->
+        <div class="job-list" ng-show="jobCtrl.jobs.length > 0">
+            <h2>Job Listings</h2>
+            <div class="job-item" ng-repeat="job in jobCtrl.jobs">
+                <h3>{{ job.title }}</h3>
+                <p><strong>Company:</strong> {{ job.company }}</p>
+                <p><strong>Location:</strong> {{ job.location }}</p>
+                <p><strong>Salary:</strong> {{ job.salary }}</p>
+                
+                <p><strong>Contact Email:</strong> {{ job.contactEmail }}</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        angular.module('jobListingApp', [])
+            .controller('JobController', function () {
+                var self = this;
+                self.jobs = [];
+                self.newJob = {};
+
+                self.addJob = function () {
+                    self.jobs.push({
+                        title: self.newJob.title,
+                        company: self.newJob.company,
+                        location: self.newJob.location,
+                        salary: self.newJob.salary,
+                        
+                        contactEmail: self.newJob.contactEmail
+                    });
+                    self.newJob = {}; // Clear the form fields after submission
+                };
+            });
+    </script>
+</body>
+
+</html>

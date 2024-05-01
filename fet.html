@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery Layout Example</title>
+<style>
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .image-container {
+    flex: 1;
+    margin-right: 20px;
+    position: relative;
+  }
+  .image-border {
+    border: 10px solid #045fdf;  
+    overflow: hidden; 
+    padding: 20px;  
+  }
+  .image-border img {
+    width: calc(100% + 20px);  
+    height: 500px;
+    display: block;
+    margin: -10px;  
+  }
+  .image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+     color: rgb(18, 12, 12);
+    font-size: 24px;
+    text-align: center;
+  }
+  .content-container {
+    flex: 1;
+    padding: 20px;  
+  }
+  .content-container h2 {
+    margin-top: 0;  
+  }
+  .content-container h3{
+    color: #045fdf;
+  }
+  .content-container button{
+background-color: #045fdf; 
+color: aliceblue;
+border: #045fdf;
+ }
+   
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="image-container">
+    <div class="image-border">
+      <img src="img3.jpg" alt="Image">
+      <div class="image-text">
+         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><h4> Rahul Kumar Yadav <br> Web Developer</h4>
+      </div>
+    </div>
+  </div>
+  <div class="content-container">
+    <h3>About Css3transition</h3>
+    <h1>We are Creative Tech Enthusiast working since 2015</h1>
+    <p>I am a passionate web developer with expertise in HTML, CSS, and JavaScript. I love creating responsive and user-friendly websites that provide a great user experience. With several years of experience in web development, I have worked on various projects ranging from simple static websites to complex web applications.</p>
+    <p>In addition to front-end development, I also have experience with back-end technologies such as Node.js and Express.js. I enjoy learning new technologies and keeping up with the latest trends in web development.</p>
+    <p>Feel free to contact me if you have any web development projects or opportunities. I am always excited to collaborate and contribute to meaningful projects!</p>
+  <button> Contact</button>  
+</div>
+</div>
+
+</body>
+</html>
